@@ -1,0 +1,44 @@
+
+      html,body{font-family:Inter,system-ui,Segoe UI,Roboto,Apple SD Gothic Neo,Malgun Gothic,Apple Color Emoji,emoji,sans-serif}
+      html{scroll-behavior:smooth}
+      .kbd{border:1px solid rgba(255,255,255,.15); border-bottom-width:2px; padding:.1rem .35rem; border-radius:.4rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:.85rem;}
+      .grad{background: radial-gradient(1200px 600px at 20% -10%, #1f2a44 0%, transparent 60%),
+                        radial-gradient(1000px 500px at 100% 10%, #3b2a55 0%, transparent 55%),
+                        linear-gradient(180deg, #0b0d12 0%, #0b0d12 100%);}
+
+      /* ===== 카드 애니메이션 & 글로우 ===== */
+      @keyframes cardUp {
+        0%   { opacity:0; transform:translateY(14px) scale(0.98); }
+        100% { opacity:1; transform:translateY(0) scale(1); }
+      }
+      .card-appear {
+        opacity:0;
+        animation:cardUp .6s ease forwards;
+      }
+      .card-appear.delay-1 { animation-delay:.08s; }
+      .card-appear.delay-2 { animation-delay:.16s; }
+      .card-appear.delay-3 { animation-delay:.24s; }
+      .card-appear.delay-4 { animation-delay:.32s; }
+
+      .card-glass {
+        background: radial-gradient(circle at 0 0, rgba(129,140,248,.16), transparent 55%),
+                    radial-gradient(circle at 100% 100%, rgba(45,212,191,.16), transparent 55%),
+                    rgba(15,23,42,.82);
+        border:1px solid rgba(148,163,184,.45);
+        box-shadow:0 22px 40px rgba(0,0,0,.55);
+        backdrop-filter:blur(20px);
+      }
+      .card-glass:hover {
+        transform:translateY(-4px) scale(1.01);
+        box-shadow:0 26px 50px rgba(0,0,0,.7);
+        border-color:rgba(196,181,253,.9);
+      }
+      .card-glass, .card-glass-hoverable {
+        transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+      }
+
+      .pill-gradient {
+        background:linear-gradient(120deg,#6366f1,#22c55e,#f97316);
+      }
+
+

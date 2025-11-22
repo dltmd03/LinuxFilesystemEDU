@@ -1,0 +1,25 @@
+-- DB는 미리 만들고(예: fs_edu), 그 DB에서 실행
+-- CREATE DATABASE fs_edu DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS posts (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(200) NOT NULL,
+  body MEDIUMTEXT NOT NULL,
+  tag ENUM('Q&A','TIP','BUG','SHOW') NOT NULL DEFAULT 'Q&A',
+  author VARCHAR(100) NOT NULL,
+  votes INT NOT NULL DEFAULT 0,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS comments (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  post_id BIGINT NOT NULL,
+  author VARCHAR(100) NOT NULL,
+  body TEXT NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_comments_post FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE INDEX idx_posts_created ON posts(created_at);
+CREATE INDEX idx_posts_votes ON posts(votes);
+CREATE INDEX idx_comments_post_created ON comments(post_id, created_at);
